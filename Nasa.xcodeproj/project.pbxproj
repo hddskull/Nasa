@@ -7,23 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AAB882581F93D7B684DB1B06 /* Pods_Nasa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846B6AF5253AC314E2D8F692 /* Pods_Nasa.framework */; };
 		BB46CB03271AD9AB00058FD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46CB02271AD9AB00058FD1 /* AppDelegate.swift */; };
 		BB46CB05271AD9AB00058FD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46CB04271AD9AB00058FD1 /* SceneDelegate.swift */; };
 		BB46CB07271AD9AB00058FD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46CB06271AD9AB00058FD1 /* ViewController.swift */; };
-		BB46CB0A271AD9AB00058FD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB46CB08271AD9AB00058FD1 /* Main.storyboard */; };
 		BB46CB0C271AD9B000058FD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB46CB0B271AD9B000058FD1 /* Assets.xcassets */; };
 		BB46CB0F271AD9B000058FD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB46CB0D271AD9B000058FD1 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CC98398BF605ADC309CE761 /* Pods-Nasa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nasa.debug.xcconfig"; path = "Target Support Files/Pods-Nasa/Pods-Nasa.debug.xcconfig"; sourceTree = "<group>"; };
+		846B6AF5253AC314E2D8F692 /* Pods_Nasa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nasa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB46CAFF271AD9AB00058FD1 /* Nasa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nasa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB46CB02271AD9AB00058FD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB46CB04271AD9AB00058FD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BB46CB06271AD9AB00058FD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BB46CB09271AD9AB00058FD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB46CB0B271AD9B000058FD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB46CB0E271AD9B000058FD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB46CB10271AD9B000058FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF4FB0CA5CB4AC33DA6E1AA5 /* Pods-Nasa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nasa.release.xcconfig"; path = "Target Support Files/Pods-Nasa/Pods-Nasa.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB882581F93D7B684DB1B06 /* Pods_Nasa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,8 @@
 			children = (
 				BB46CB01271AD9AB00058FD1 /* Nasa */,
 				BB46CB00271AD9AB00058FD1 /* Products */,
+				E136CBB49C78A2D57FC90792 /* Pods */,
+				D6DD4DCF10C1D9881507F2D0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +64,29 @@
 				BB46CB02271AD9AB00058FD1 /* AppDelegate.swift */,
 				BB46CB04271AD9AB00058FD1 /* SceneDelegate.swift */,
 				BB46CB06271AD9AB00058FD1 /* ViewController.swift */,
-				BB46CB08271AD9AB00058FD1 /* Main.storyboard */,
 				BB46CB0B271AD9B000058FD1 /* Assets.xcassets */,
 				BB46CB0D271AD9B000058FD1 /* LaunchScreen.storyboard */,
 				BB46CB10271AD9B000058FD1 /* Info.plist */,
 			);
 			path = Nasa;
+			sourceTree = "<group>";
+		};
+		D6DD4DCF10C1D9881507F2D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				846B6AF5253AC314E2D8F692 /* Pods_Nasa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E136CBB49C78A2D57FC90792 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4CC98398BF605ADC309CE761 /* Pods-Nasa.debug.xcconfig */,
+				EF4FB0CA5CB4AC33DA6E1AA5 /* Pods-Nasa.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB46CB13271AD9B000058FD1 /* Build configuration list for PBXNativeTarget "Nasa" */;
 			buildPhases = (
+				3E7A0FF7A0CFB1115952142C /* [CP] Check Pods Manifest.lock */,
 				BB46CAFB271AD9AB00058FD1 /* Sources */,
 				BB46CAFC271AD9AB00058FD1 /* Frameworks */,
 				BB46CAFD271AD9AB00058FD1 /* Resources */,
+				62BE80618156063F8C196071 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,11 +150,52 @@
 			files = (
 				BB46CB0F271AD9B000058FD1 /* LaunchScreen.storyboard in Resources */,
 				BB46CB0C271AD9B000058FD1 /* Assets.xcassets in Resources */,
-				BB46CB0A271AD9AB00058FD1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E7A0FF7A0CFB1115952142C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Nasa-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62BE80618156063F8C196071 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nasa/Pods-Nasa-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nasa/Pods-Nasa-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Nasa/Pods-Nasa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BB46CAFB271AD9AB00058FD1 /* Sources */ = {
@@ -146,14 +211,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BB46CB08271AD9AB00058FD1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BB46CB09271AD9AB00058FD1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BB46CB0D271AD9B000058FD1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -283,6 +340,7 @@
 		};
 		BB46CB14271AD9B000058FD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CC98398BF605ADC309CE761 /* Pods-Nasa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +360,7 @@
 		};
 		BB46CB15271AD9B000058FD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF4FB0CA5CB4AC33DA6E1AA5 /* Pods-Nasa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
