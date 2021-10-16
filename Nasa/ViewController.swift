@@ -6,14 +6,31 @@
 //
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .blue
+        makeConstraints()
     }
+    
+    
+    let newView: UIView = {
+        let v = UIView()
+        v.backgroundColor = .green
+        return v
+    }()
 
-
+    
+    func makeConstraints() {
+        view.addSubview(newView)
+        newView.snp.makeConstraints { make in
+            make.top.equalTo(view.snp.top)
+            make.leading.trailing.equalTo(view)
+            make.height.equalTo(400)
+        }
+    }
 }
 
