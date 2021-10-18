@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,10 @@
 		BB46CB07271AD9AB00058FD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46CB06271AD9AB00058FD1 /* ViewController.swift */; };
 		BB46CB0C271AD9B000058FD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB46CB0B271AD9B000058FD1 /* Assets.xcassets */; };
 		BB46CB0F271AD9B000058FD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB46CB0D271AD9B000058FD1 /* LaunchScreen.storyboard */; };
+		BB46CB1A271B22F600058FD1 /* APODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46CB19271B22F600058FD1 /* APODViewController.swift */; };
+		BB46CB1C271B233500058FD1 /* APODView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46CB1B271B233500058FD1 /* APODView.swift */; };
+		BB46CB1E271B2EE100058FD1 /* APODModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46CB1D271B2EE100058FD1 /* APODModel.swift */; };
+		BB46CB20271B2FC700058FD1 /* APODService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46CB1F271B2FC700058FD1 /* APODService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,10 @@
 		BB46CB0B271AD9B000058FD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB46CB0E271AD9B000058FD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB46CB10271AD9B000058FD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB46CB19271B22F600058FD1 /* APODViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODViewController.swift; sourceTree = "<group>"; };
+		BB46CB1B271B233500058FD1 /* APODView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODView.swift; sourceTree = "<group>"; };
+		BB46CB1D271B2EE100058FD1 /* APODModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODModel.swift; sourceTree = "<group>"; };
+		BB46CB1F271B2FC700058FD1 /* APODService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODService.swift; sourceTree = "<group>"; };
 		EF4FB0CA5CB4AC33DA6E1AA5 /* Pods-Nasa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nasa.release.xcconfig"; path = "Target Support Files/Pods-Nasa/Pods-Nasa.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +69,7 @@
 		BB46CB01271AD9AB00058FD1 /* Nasa */ = {
 			isa = PBXGroup;
 			children = (
+				BB46CB16271B20AF00058FD1 /* APOD */,
 				BB46CB02271AD9AB00058FD1 /* AppDelegate.swift */,
 				BB46CB04271AD9AB00058FD1 /* SceneDelegate.swift */,
 				BB46CB06271AD9AB00058FD1 /* ViewController.swift */,
@@ -69,6 +78,17 @@
 				BB46CB10271AD9B000058FD1 /* Info.plist */,
 			);
 			path = Nasa;
+			sourceTree = "<group>";
+		};
+		BB46CB16271B20AF00058FD1 /* APOD */ = {
+			isa = PBXGroup;
+			children = (
+				BB46CB19271B22F600058FD1 /* APODViewController.swift */,
+				BB46CB1B271B233500058FD1 /* APODView.swift */,
+				BB46CB1D271B2EE100058FD1 /* APODModel.swift */,
+				BB46CB1F271B2FC700058FD1 /* APODService.swift */,
+			);
+			path = APOD;
 			sourceTree = "<group>";
 		};
 		D6DD4DCF10C1D9881507F2D0 /* Frameworks */ = {
@@ -85,7 +105,6 @@
 				4CC98398BF605ADC309CE761 /* Pods-Nasa.debug.xcconfig */,
 				EF4FB0CA5CB4AC33DA6E1AA5 /* Pods-Nasa.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -202,9 +221,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB46CB1C271B233500058FD1 /* APODView.swift in Sources */,
 				BB46CB07271AD9AB00058FD1 /* ViewController.swift in Sources */,
 				BB46CB03271AD9AB00058FD1 /* AppDelegate.swift in Sources */,
+				BB46CB1A271B22F600058FD1 /* APODViewController.swift in Sources */,
+				BB46CB20271B2FC700058FD1 /* APODService.swift in Sources */,
 				BB46CB05271AD9AB00058FD1 /* SceneDelegate.swift in Sources */,
+				BB46CB1E271B2EE100058FD1 /* APODModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

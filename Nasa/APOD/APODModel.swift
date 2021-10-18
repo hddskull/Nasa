@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct APODModel: Decodable {
+    var apodName: String?
+    var apodDescription: String?
+    var url: String?
+}
