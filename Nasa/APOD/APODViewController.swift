@@ -10,12 +10,12 @@ import UIKit
 class APODViewController: UIViewController {
     
     var apodView: APODView?
-    var apodService: APODService?
+    var imageUrl: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView(self.view)
-        
+        getInfo()
     }
     
     func setUpView(_ view: UIView) {
@@ -30,18 +30,11 @@ class APODViewController: UIViewController {
     }
     
     func getInfo() {
-        self.apodService = APODService()
-        apodService?.getAPOD()
-        DispatchQueue.main.async {
-            guard let apodModel = self.apodService?.APODResponse else { return }
-            
-            self.apodView?.apodName.text = apodModel.apodName
-            self.apodView?.apodDesc.text = apodModel.apodDescription
-            self.apodView?.imageView.image = apodModel.
-        }
-        //Проблема с взятием изображения из ссылки и вставкой его в изображение
-        
-
+        APODService.getAPOD(completion: { apodResponse, imageData in
+            self.apodView?.apodName.text = apodResponse.title
+            self.apodView?.apodDesc.text = apodResponse.explanation
+            let image = UIImage(data: imageData)
+            self.apodView?.imageView.image = image
+        })
     }
-
 }
