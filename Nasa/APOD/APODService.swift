@@ -11,7 +11,8 @@ class APODService {
     var APODResponse: APODModel?
     
     static func getAPOD(completion: @escaping (_ APODResponse: APODModel, _ imageData: Data) -> ()) {
-        
+        print("getAPOD")
+
         guard let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=YhOi1mhKm17uKLbaUbxo5EmtjOcSIiAC0LQvBcTE") else { return }
         
         let session = URLSession.shared
@@ -25,6 +26,7 @@ class APODService {
                 
                 DispatchQueue.main.async {
                     completion(apodResponse, imageData)
+                    print("complition")
                 }
             }
         }.resume()

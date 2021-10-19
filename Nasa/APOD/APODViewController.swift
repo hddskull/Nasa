@@ -10,6 +10,7 @@ import UIKit
 class APODViewController: UIViewController {
     
     var apodView: APODView?
+    var loadingScreen: LoadingScreen?
     var imageUrl: String?
 
     override func viewDidLoad() {
@@ -27,10 +28,15 @@ class APODViewController: UIViewController {
         aView.snp.makeConstraints { make in
             make.edges.equalTo(self.view)
         }
+        self.loadingScreen = LoadingScreen()
+        self.loadingScreen?.showLoadingScreen(aView)
+        self.loadingScreen?.activityIndicator.startAnimating()
     }
     
     func getInfo() {
         APODService.getAPOD(completion: { apodResponse, imageData in
+            self.loadingScreen?.activityIndicator.stopAnimating()
+            self.loadingScreen?.backgroundView.isHidden = true
             self.apodView?.apodName.text = apodResponse.title
             self.apodView?.apodDesc.text = apodResponse.explanation
             let image = UIImage(data: imageData)

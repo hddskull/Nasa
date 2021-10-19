@@ -6,15 +6,27 @@
 //
 
 import UIKit
+import SnapKit
 
-class loadingScreen: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+class LoadingScreen: UIView {
+    
+    let activityIndicator = UIActivityIndicatorView()
+    let backgroundView = UIView()
+    
+    func showLoadingScreen(_ view: UIView) {
+        
+        view.addSubview(backgroundView)
+        view.addSubview(activityIndicator)
+        
+        backgroundView.backgroundColor = .lightGray
+        backgroundView.snp.makeConstraints { make in
+            make.edges.equalTo(view)
+        }
+        
+        activityIndicator.style = .large
+        activityIndicator.snp.makeConstraints { make in
+            make.centerX.centerY.equalTo(backgroundView)
+        }
     }
-    */
 
 }
