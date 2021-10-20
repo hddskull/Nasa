@@ -15,7 +15,7 @@ class TabBarController: UITabBarController {
     
     func setUpTabBar() {
         let vc1 = APODViewController()
-        let vc2 = MarsViewController(collectionViewLayout: UICollectionViewLayout())
+        let vc2 = MarsViewController()
         
         vc1.title = "APOD"
         vc1.tabBarItem.image = UIImage(systemName: "house")
