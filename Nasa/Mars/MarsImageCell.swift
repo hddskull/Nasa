@@ -10,7 +10,7 @@ import SnapKit
 
 class MarsImageCell: UICollectionViewCell {
     
-    let image: UIImageView = {
+    var image: UIImageView = {
         let img = UIImageView()
         img.layer.cornerRadius = 5
         img.clipsToBounds = true
