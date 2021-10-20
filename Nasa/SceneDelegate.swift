@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
         self.window = UIWindow(windowScene: windowScene)
 
-        let vc = APODViewController()
+        let vc = TabBarController()
 
         let rootNC = UINavigationController(rootViewController: vc)
 
