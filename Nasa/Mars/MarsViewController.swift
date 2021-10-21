@@ -14,6 +14,8 @@ class MarsViewController: UIViewController, UICollectionViewDataSource, UICollec
     var collectionView: UICollectionView!
     var cellID = "Cell"
     var imageDataArr: [Data] = []
+    var imageNames: [String] = []
+    var savedImages: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,22 +39,32 @@ class MarsViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageDataArr.count
+        return savedImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! MarsImageCell
         //configure image into cell
         cell.backgroundColor = .brown
-        cell.image.image = UIImage(data: imageDataArr[indexPath.row])
+        cell.image.image = savedImages[indexPath.row]
         return cell
     }
     
     func getMarsImages() {
-        MarsNetworkManager.getMarsImage { dataArr in
-            print(dataArr)
+        MarsNetworkManager.getMarsImage { dataArr, nameArr in
             self.imageDataArr = dataArr
-            self.collectionView.reloadData()
+            self.imageNames = nameArr
+            ImageManager.saveImage(imageNames: self.imageNames, imageDataArr: self.imageDataArr)
+            
+            ImageManager.loadImage(imageNames: self.imageNames) { images in
+                print(images.count)
+                print(type(of: images[0]))
+                self.savedImages = images
+                self.collectionView.reloadData()
+            }
+            
         }
+        
+
     }
 }
