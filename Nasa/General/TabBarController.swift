@@ -14,6 +14,9 @@ class TabBarController: UITabBarController {
     }
     
     func setUpTabBar() {
+        self.tabBar.tintColor = .white
+        self.tabBar.isTranslucent = false
+        self.tabBar.backgroundColor = .systemGray
         let vc1 = APODViewController()
         let vc2 = MarsViewController()
         
