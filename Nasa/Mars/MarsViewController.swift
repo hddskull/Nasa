@@ -37,6 +37,12 @@ class MarsViewController: UIViewController, UICollectionViewDataSource, UICollec
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .systemOrange
         view.addSubview(collectionView)
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.backgroundColor = .black
+        
+        let paramBtn = UIBarButtonItem(title: "Параметры", style: .plain, target: self, action: #selector(openParametrsView))
+//        navigationItem.rightBarButtonItem = paramBtn
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = paramBtn
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -49,6 +55,10 @@ class MarsViewController: UIViewController, UICollectionViewDataSource, UICollec
         cell.backgroundColor = .brown
         cell.image.image = savedImages[indexPath.row]
         return cell
+    }
+    
+    @objc func openParametrsView(){
+        navigationController?.pushViewController(MarsParametrsController(), animated: true)
     }
     
 //    func getMarsImages() {

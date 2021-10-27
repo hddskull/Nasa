@@ -21,6 +21,7 @@
 		DF008CC02720443100FCEBD3 /* MarsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF008CBF2720443100FCEBD3 /* MarsModels.swift */; };
 		DF008CC22720465B00FCEBD3 /* MarsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF008CC12720465B00FCEBD3 /* MarsNetworkManager.swift */; };
 		DF79B9C22721C03F00983676 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF79B9C12721C03F00983676 /* ImageManager.swift */; };
+		DF79B9C72729AFA800983676 /* MarsParametrsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF79B9C62729AFA800983676 /* MarsParametrsController.swift */; };
 		DFA3C252271F06B000417412 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3C251271F06B000417412 /* LoadingScreen.swift */; };
 		DFA3C2552720260500417412 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3C2542720260500417412 /* TabBarController.swift */; };
 		DFA3C2582720271E00417412 /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3C2572720271E00417412 /* MarsViewController.swift */; };
@@ -44,6 +45,7 @@
 		DF008CBF2720443100FCEBD3 /* MarsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsModels.swift; sourceTree = "<group>"; };
 		DF008CC12720465B00FCEBD3 /* MarsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsNetworkManager.swift; sourceTree = "<group>"; };
 		DF79B9C12721C03F00983676 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		DF79B9C62729AFA800983676 /* MarsParametrsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsParametrsController.swift; sourceTree = "<group>"; };
 		DFA3C251271F06B000417412 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		DFA3C2542720260500417412 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		DFA3C2572720271E00417412 /* MarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				DF008CBD27203BD600FCEBD3 /* MarsImageCell.swift */,
 				DF008CBF2720443100FCEBD3 /* MarsModels.swift */,
 				DF008CC12720465B00FCEBD3 /* MarsNetworkManager.swift */,
+				DF79B9C62729AFA800983676 /* MarsParametrsController.swift */,
 			);
 			path = Mars;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				DF008CBE27203BD600FCEBD3 /* MarsImageCell.swift in Sources */,
 				DFA3C2552720260500417412 /* TabBarController.swift in Sources */,
 				BB46CB1A271B22F600058FD1 /* APODViewController.swift in Sources */,
+				DF79B9C72729AFA800983676 /* MarsParametrsController.swift in Sources */,
 				DFA3C252271F06B000417412 /* LoadingScreen.swift in Sources */,
 				BB46CB20271B2FC700058FD1 /* APODService.swift in Sources */,
 				DF79B9C22721C03F00983676 /* ImageManager.swift in Sources */,
