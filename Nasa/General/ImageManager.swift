@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class ImageManager {
-    static func saveImage(imageNames: [String], imageDataArr: [Data]){
+    static func saveImage(imageNames: [String], imageDataArr: [Data], completion: @escaping (_ smt: String) -> ()){
         
         let queue = DispatchQueue.global(qos: .utility)
         
@@ -32,7 +32,10 @@ class ImageManager {
                     print("\(imageNames[i]) already exists")
                 }
             }
-            print("images saved")
+            
+            DispatchQueue.main.sync {
+                completion("smt")
+            }
         }
         
     }
@@ -42,7 +45,6 @@ class ImageManager {
         let queue = DispatchQueue.global(qos: .utility)
         
         queue.async( flags: .barrier) {
-            print("in async")
             var images = [UIImage]()
             for imageName in imageNames {
                 let docDir = FileManager.SearchPathDirectory.documentDirectory
@@ -50,14 +52,13 @@ class ImageManager {
                 let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
                 let paths = NSSearchPathForDirectoriesInDomains(docDir, userDomainMask, true)
                 if let dirPath = paths.first {
-                    
-                    let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(imageName)
-                    guard let image = UIImage(contentsOfFile: imageURL.path) else { return }
-                    images.append(image)
-                    print("image appended")
+                    if let imageURL = try? URL(fileURLWithPath: dirPath).appendingPathComponent(imageName), let image = UIImage(contentsOfFile: imageURL.path) {
+                        images.append(image)
+                    } else {
+                        print("no images in local")
+                    }
                 }
             }
-            print("before DispatchQueue main")
             DispatchQueue.main.sync {
                 completion(images)
             }

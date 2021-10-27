@@ -20,7 +20,8 @@ class MarsViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCV()
-        getMarsImages()
+//        getMarsImages()
+        getImageNames()
         
     }
     
@@ -50,21 +51,44 @@ class MarsViewController: UIViewController, UICollectionViewDataSource, UICollec
         return cell
     }
     
-    func getMarsImages() {
-        MarsNetworkManager.getMarsImage { dataArr, nameArr in
-            self.imageDataArr = dataArr
-            self.imageNames = nameArr
-            ImageManager.saveImage(imageNames: self.imageNames, imageDataArr: self.imageDataArr)
-            
-            ImageManager.loadImage(imageNames: self.imageNames) { images in
-                print(images.count)
-                print(type(of: images[0]))
-                self.savedImages = images
-                self.collectionView.reloadData()
+//    func getMarsImages() {
+//        MarsNetworkManager.getMarsImage { dataArr, nameArr in
+//            self.imageDataArr = dataArr
+//            self.imageNames = nameArr
+//            ImageManager.saveImage(imageNames: self.imageNames, imageDataArr: self.imageDataArr)
+//            
+//            ImageManager.loadImage(imageNames: self.imageNames) { images in
+//                print(images.count)
+//                print(type(of: images[0]))
+//                self.savedImages = images
+//                self.collectionView.reloadData()
+//            }
+//            
+//        }
+//    }
+//    
+    func getImageNames() {
+        MarsNetworkManager.getMarsImageNames { imageNames in
+            print(imageNames)
+            ImageManager.loadImage(imageNames: imageNames) { images in
+                if images.count < 1 {
+                    print("no images")
+                    MarsNetworkManager.getMarsImages(imageNames) { imageArr in
+                        ImageManager.saveImage(imageNames: imageNames, imageDataArr: imageArr) { smt in
+                            ImageManager.loadImage(imageNames: imageNames) { images in
+                                self.savedImages = images
+                                self.collectionView.reloadData()
+                            }
+                        }
+                    }
+                }
+                else {
+                    self.savedImages = images
+                    self.collectionView.reloadData()
+                }
+                
             }
-            
-        }
-        
 
+        }
     }
 }
