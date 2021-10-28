@@ -35,6 +35,7 @@ class APODViewController: UIViewController {
     
     func getInfo() {
         APODService.getAPOD(completion: { apodResponse, imageData in
+            
             self.loadingScreen?.activityIndicator.stopAnimating()
             self.loadingScreen?.backgroundView.isHidden = true
             self.apodView?.apodName.text = apodResponse.title
