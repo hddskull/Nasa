@@ -20,7 +20,6 @@ class MarsViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCV()
-//        getMarsImages()
         getImageNames()
         
     }
@@ -41,7 +40,6 @@ class MarsViewController: UIViewController, UICollectionViewDataSource, UICollec
         navigationController?.navigationBar.backgroundColor = .black
         
         let paramBtn = UIBarButtonItem(title: "Параметры", style: .plain, target: self, action: #selector(openParametrsView))
-//        navigationItem.rightBarButtonItem = paramBtn
         self.navigationController?.navigationBar.topItem?.rightBarButtonItem = paramBtn
     }
 
@@ -51,7 +49,6 @@ class MarsViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! MarsImageCell
-        //configure image into cell
         cell.backgroundColor = .brown
         cell.image.image = savedImages[indexPath.row]
         return cell
@@ -61,22 +58,6 @@ class MarsViewController: UIViewController, UICollectionViewDataSource, UICollec
         navigationController?.pushViewController(MarsParametrsController(), animated: true)
     }
     
-//    func getMarsImages() {
-//        MarsNetworkManager.getMarsImage { dataArr, nameArr in
-//            self.imageDataArr = dataArr
-//            self.imageNames = nameArr
-//            ImageManager.saveImage(imageNames: self.imageNames, imageDataArr: self.imageDataArr)
-//            
-//            ImageManager.loadImage(imageNames: self.imageNames) { images in
-//                print(images.count)
-//                print(type(of: images[0]))
-//                self.savedImages = images
-//                self.collectionView.reloadData()
-//            }
-//            
-//        }
-//    }
-//    
     func getImageNames() {
         MarsNetworkManager.getMarsImageNames { imageNames in
             print(imageNames)

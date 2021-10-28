@@ -13,9 +13,6 @@ class MarsParametrsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-        
-
-        // Do any additional setup after loading the view.
     }
     
     let datePicker: UIDatePicker = {
@@ -47,8 +44,9 @@ class MarsParametrsController: UIViewController {
         
         view.addSubview(btn)
         btn.snp.makeConstraints { make in
-            make.top.equalTo(datePicker.snp.bottom)
-            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.leading.equalToSuperview().offset(30)
+            make.trailing.equalToSuperview().inset(30)
             make.height.equalTo(50)
         }
     }
