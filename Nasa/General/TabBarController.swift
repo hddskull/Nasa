@@ -22,7 +22,7 @@ class TabBarController: UITabBarController {
         
         vc1.title = "APOD"
         vc1.tabBarItem.image = UIImage(systemName: "house")
-        vc2.title = "Mars"
+        vc2.title = "Earth"
         vc2.tabBarItem.image = UIImage(systemName: "star")
         
 //        guard let items = self.tabBar.items else {
