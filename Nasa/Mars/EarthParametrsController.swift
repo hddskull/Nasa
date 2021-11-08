@@ -10,10 +10,7 @@ import SnapKit
 
 class EarthParametrsController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUpView()
-    }
+    var parametrDelegate: PassEarthParametrs?
     
     let datePicker: UIDatePicker = {
         let dp = UIDatePicker()
@@ -31,8 +28,14 @@ class EarthParametrsController: UIViewController {
         btn.setTitle("Apply", for: .normal)
         btn.tintColor = .white
         btn.backgroundColor = .black
+        btn.addTarget(self, action: #selector(getDateFromDataPicker), for: .touchUpInside)
         return btn
     }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setUpView()
+    }
     
     func setUpView() {
         view.addSubview(datePicker)
@@ -49,6 +52,20 @@ class EarthParametrsController: UIViewController {
             make.trailing.equalToSuperview().inset(30)
             make.height.equalTo(50)
         }
+    }
+    
+    @objc func getDateFromDataPicker(_ sender: UIButton){
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "YYYY-MM-dd"
+        let date = dateFormater.string(from: datePicker.date)
+        if parametrDelegate != nil {
+            parametrDelegate?.didGetParametrs(date)
+        }
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func passDate(_ date: String, _ completion: @escaping (String) -> Void){
+        completion(date)
     }
 
 }

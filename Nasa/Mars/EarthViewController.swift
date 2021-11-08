@@ -7,8 +7,9 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
+protocol PassEarthParametrs{
+    func didGetParametrs(_ date: String)
+}
 class EarthViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var collectionView: UICollectionView!
@@ -16,10 +17,12 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
     var imageDataArr: [Data] = []
     var imageNames: [String] = []
     var savedImages: [UIImage] = []
+    var currentDate: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCV()
+        setUpParametrs()
         getImageNames()
         
     }
@@ -55,16 +58,25 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     @objc func openParametrsView(){
-        navigationController?.pushViewController(EarthParametrsController(), animated: true)
+        let paramentrVC = EarthParametrsController()
+        paramentrVC.parametrDelegate = self
+        navigationController?.pushViewController(paramentrVC, animated: true)
+    }
+    
+    func setUpParametrs(){
+//        let dateFormater = DateFormatter()
+//        dateFormater.dateFormat = "YYYY-MM-dd"
+//        currentDate = dateFormater.string(from: Date())
+        currentDate = "2020-10-11"
     }
     
     func getImageNames() {
-        EarthNetworkManager.getMarsImageNames { imageNames in
+        EarthNetworkManager.getEarthImageNames(self.currentDate) { imageNames in
             print(imageNames)
             ImageManager.loadImage(imageNames: imageNames) { images in
                 if images.count < 1 {
                     print("no images")
-                    EarthNetworkManager.getMarsImages(imageNames) { imageArr in
+                    EarthNetworkManager.getEarthImages(imageNames) { imageArr in
                         ImageManager.saveImage(imageNames: imageNames, imageDataArr: imageArr) { smt in
                             ImageManager.loadImage(imageNames: imageNames) { images in
                                 self.savedImages = images
@@ -82,4 +94,17 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
 
         }
     }
+}
+
+extension EarthViewController: PassEarthParametrs {
+    func didGetParametrs(_ date: String) {
+        if currentDate != date {
+            print("diff date")
+            currentDate = date
+            getImageNames()
+        } else {
+            print("same date")
+        }
+    }
+    
 }

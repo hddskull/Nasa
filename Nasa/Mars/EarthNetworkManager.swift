@@ -9,11 +9,11 @@ import Foundation
 
 class EarthNetworkManager {
 
-    static func getMarsImageNames(completion: @escaping (_ imageNames: [String]) -> ()) {
+    static func getEarthImageNames(_ currentDate: String, completion: @escaping (_ imageNames: [String]) -> ()) {
         
-        
+        print("currentDate in getEarthImageNames: ", currentDate)
         var imageNames = [String]()
-        let urlString = "https://api.nasa.gov/EPIC/api/natural/date/2020-10-11?api_key=YhOi1mhKm17uKLbaUbxo5EmtjOcSIiAC0LQvBcTE"
+        let urlString = "https://api.nasa.gov/EPIC/api/natural/date/\(currentDate)?api_key=YhOi1mhKm17uKLbaUbxo5EmtjOcSIiAC0LQvBcTE"
         
         guard let url = URL(string: urlString) else { return }
         print("url formed")
@@ -33,7 +33,7 @@ class EarthNetworkManager {
         }.resume()
     }
     
-    static func getMarsImages(_ imageNames: [String], completion: @escaping(_ imageArr: [Data]) -> ()) {
+    static func getEarthImages(_ imageNames: [String], completion: @escaping(_ imageArr: [Data]) -> ()) {
         
         let queue = DispatchQueue.global(qos: .utility)
         
