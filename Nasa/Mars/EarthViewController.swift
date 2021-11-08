@@ -9,7 +9,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class MarsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class EarthViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var collectionView: UICollectionView!
     var cellID = "Cell"
@@ -32,7 +32,7 @@ class MarsViewController: UIViewController, UICollectionViewDataSource, UICollec
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(MarsImageCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView.register(EarthImageCell.self, forCellWithReuseIdentifier: cellID)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .systemOrange
         view.addSubview(collectionView)
@@ -48,23 +48,23 @@ class MarsViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! MarsImageCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! EarthImageCell
         cell.backgroundColor = .brown
         cell.image.image = savedImages[indexPath.row]
         return cell
     }
     
     @objc func openParametrsView(){
-        navigationController?.pushViewController(MarsParametrsController(), animated: true)
+        navigationController?.pushViewController(EarthParametrsController(), animated: true)
     }
     
     func getImageNames() {
-        MarsNetworkManager.getMarsImageNames { imageNames in
+        EarthNetworkManager.getMarsImageNames { imageNames in
             print(imageNames)
             ImageManager.loadImage(imageNames: imageNames) { images in
                 if images.count < 1 {
                     print("no images")
-                    MarsNetworkManager.getMarsImages(imageNames) { imageArr in
+                    EarthNetworkManager.getMarsImages(imageNames) { imageArr in
                         ImageManager.saveImage(imageNames: imageNames, imageDataArr: imageArr) { smt in
                             ImageManager.loadImage(imageNames: imageNames) { images in
                                 self.savedImages = images

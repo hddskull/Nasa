@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MarsNetworkManager {
+class EarthNetworkManager {
 
     static func getMarsImageNames(completion: @escaping (_ imageNames: [String]) -> ()) {
         
@@ -21,7 +21,7 @@ class MarsNetworkManager {
         session.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else { return }
             
-            if let epicModel = try? JSONDecoder().decode([EPICDataModel].self, from: data){
+            if let epicModel = try? JSONDecoder().decode([MarsModel].self, from: data){
                 for item in epicModel {
                     imageNames.append(item.image)
                 }

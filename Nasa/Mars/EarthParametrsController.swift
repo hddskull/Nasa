@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MarsParametrsController: UIViewController {
+class EarthParametrsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

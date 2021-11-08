@@ -17,14 +17,14 @@
 		BB46CB1C271B233500058FD1 /* APODView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46CB1B271B233500058FD1 /* APODView.swift */; };
 		BB46CB1E271B2EE100058FD1 /* APODModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46CB1D271B2EE100058FD1 /* APODModel.swift */; };
 		BB46CB20271B2FC700058FD1 /* APODService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46CB1F271B2FC700058FD1 /* APODService.swift */; };
-		DF008CBE27203BD600FCEBD3 /* MarsImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF008CBD27203BD600FCEBD3 /* MarsImageCell.swift */; };
-		DF008CC02720443100FCEBD3 /* MarsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF008CBF2720443100FCEBD3 /* MarsModels.swift */; };
-		DF008CC22720465B00FCEBD3 /* MarsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF008CC12720465B00FCEBD3 /* MarsNetworkManager.swift */; };
+		DF008CBE27203BD600FCEBD3 /* EarthImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF008CBD27203BD600FCEBD3 /* EarthImageCell.swift */; };
+		DF008CC02720443100FCEBD3 /* EarthModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF008CBF2720443100FCEBD3 /* EarthModels.swift */; };
+		DF008CC22720465B00FCEBD3 /* EarthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF008CC12720465B00FCEBD3 /* EarthNetworkManager.swift */; };
 		DF79B9C22721C03F00983676 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF79B9C12721C03F00983676 /* ImageManager.swift */; };
-		DF79B9C72729AFA800983676 /* MarsParametrsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF79B9C62729AFA800983676 /* MarsParametrsController.swift */; };
+		DF79B9C72729AFA800983676 /* EarthParametrsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF79B9C62729AFA800983676 /* EarthParametrsController.swift */; };
 		DFA3C252271F06B000417412 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3C251271F06B000417412 /* LoadingScreen.swift */; };
 		DFA3C2552720260500417412 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3C2542720260500417412 /* TabBarController.swift */; };
-		DFA3C2582720271E00417412 /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3C2572720271E00417412 /* MarsViewController.swift */; };
+		DFA3C2582720271E00417412 /* EarthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3C2572720271E00417412 /* EarthViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,14 +41,14 @@
 		BB46CB1B271B233500058FD1 /* APODView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODView.swift; sourceTree = "<group>"; };
 		BB46CB1D271B2EE100058FD1 /* APODModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODModel.swift; sourceTree = "<group>"; };
 		BB46CB1F271B2FC700058FD1 /* APODService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODService.swift; sourceTree = "<group>"; };
-		DF008CBD27203BD600FCEBD3 /* MarsImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsImageCell.swift; sourceTree = "<group>"; };
-		DF008CBF2720443100FCEBD3 /* MarsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsModels.swift; sourceTree = "<group>"; };
-		DF008CC12720465B00FCEBD3 /* MarsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsNetworkManager.swift; sourceTree = "<group>"; };
+		DF008CBD27203BD600FCEBD3 /* EarthImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthImageCell.swift; sourceTree = "<group>"; };
+		DF008CBF2720443100FCEBD3 /* EarthModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthModels.swift; sourceTree = "<group>"; };
+		DF008CC12720465B00FCEBD3 /* EarthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthNetworkManager.swift; sourceTree = "<group>"; };
 		DF79B9C12721C03F00983676 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
-		DF79B9C62729AFA800983676 /* MarsParametrsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsParametrsController.swift; sourceTree = "<group>"; };
+		DF79B9C62729AFA800983676 /* EarthParametrsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthParametrsController.swift; sourceTree = "<group>"; };
 		DFA3C251271F06B000417412 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		DFA3C2542720260500417412 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		DFA3C2572720271E00417412 /* MarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewController.swift; sourceTree = "<group>"; };
+		DFA3C2572720271E00417412 /* EarthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthViewController.swift; sourceTree = "<group>"; };
 		EF4FB0CA5CB4AC33DA6E1AA5 /* Pods-Nasa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nasa.release.xcconfig"; path = "Target Support Files/Pods-Nasa/Pods-Nasa.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,11 +130,11 @@
 		DFA3C256272026F600417412 /* Mars */ = {
 			isa = PBXGroup;
 			children = (
-				DFA3C2572720271E00417412 /* MarsViewController.swift */,
-				DF008CBD27203BD600FCEBD3 /* MarsImageCell.swift */,
-				DF008CBF2720443100FCEBD3 /* MarsModels.swift */,
-				DF008CC12720465B00FCEBD3 /* MarsNetworkManager.swift */,
-				DF79B9C62729AFA800983676 /* MarsParametrsController.swift */,
+				DFA3C2572720271E00417412 /* EarthViewController.swift */,
+				DF008CBD27203BD600FCEBD3 /* EarthImageCell.swift */,
+				DF008CBF2720443100FCEBD3 /* EarthModels.swift */,
+				DF008CC12720465B00FCEBD3 /* EarthNetworkManager.swift */,
+				DF79B9C62729AFA800983676 /* EarthParametrsController.swift */,
 			);
 			path = Mars;
 			sourceTree = "<group>";
@@ -264,17 +264,17 @@
 				BB46CB1C271B233500058FD1 /* APODView.swift in Sources */,
 				BB46CB07271AD9AB00058FD1 /* ViewController.swift in Sources */,
 				BB46CB03271AD9AB00058FD1 /* AppDelegate.swift in Sources */,
-				DFA3C2582720271E00417412 /* MarsViewController.swift in Sources */,
-				DF008CBE27203BD600FCEBD3 /* MarsImageCell.swift in Sources */,
+				DFA3C2582720271E00417412 /* EarthViewController.swift in Sources */,
+				DF008CBE27203BD600FCEBD3 /* EarthImageCell.swift in Sources */,
 				DFA3C2552720260500417412 /* TabBarController.swift in Sources */,
 				BB46CB1A271B22F600058FD1 /* APODViewController.swift in Sources */,
-				DF79B9C72729AFA800983676 /* MarsParametrsController.swift in Sources */,
+				DF79B9C72729AFA800983676 /* EarthParametrsController.swift in Sources */,
 				DFA3C252271F06B000417412 /* LoadingScreen.swift in Sources */,
 				BB46CB20271B2FC700058FD1 /* APODService.swift in Sources */,
 				DF79B9C22721C03F00983676 /* ImageManager.swift in Sources */,
 				BB46CB05271AD9AB00058FD1 /* SceneDelegate.swift in Sources */,
-				DF008CC02720443100FCEBD3 /* MarsModels.swift in Sources */,
-				DF008CC22720465B00FCEBD3 /* MarsNetworkManager.swift in Sources */,
+				DF008CC02720443100FCEBD3 /* EarthModels.swift in Sources */,
+				DF008CC22720465B00FCEBD3 /* EarthNetworkManager.swift in Sources */,
 				BB46CB1E271B2EE100058FD1 /* APODModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

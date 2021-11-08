@@ -18,7 +18,7 @@ class TabBarController: UITabBarController {
         self.tabBar.isTranslucent = false
         self.tabBar.backgroundColor = .black
         let vc1 = APODViewController()
-        let vc2 = MarsViewController()
+        let vc2 = EarthViewController()
         
         vc1.title = "APOD"
         vc1.tabBarItem.image = UIImage(systemName: "house")

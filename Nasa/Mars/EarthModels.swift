@@ -7,6 +7,6 @@
 
 import Foundation
 
-class EPICDataModel: Decodable {
+class MarsModel: Decodable {
     var image: String
 }

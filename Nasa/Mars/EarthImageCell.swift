@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MarsImageCell: UICollectionViewCell {
+class EarthImageCell: UICollectionViewCell {
     
     var image: UIImageView = {
         let img = UIImageView()
