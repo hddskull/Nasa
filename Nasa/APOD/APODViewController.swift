@@ -23,25 +23,55 @@ class APODViewController: UIViewController {
         view.backgroundColor = .green
         self.apodView = APODView()
         self.apodView?.setConstraints()
-        guard let aView = apodView else { return }
+        
+        guard let aView = apodView
+        else { return }
+        
         view.addSubview(aView)
         aView.snp.makeConstraints { make in
             make.edges.equalTo(self.view)
         }
+        
         self.loadingScreen = LoadingScreen()
         self.loadingScreen?.showLoadingScreen(aView)
         self.loadingScreen?.activityIndicator.startAnimating()
     }
     
     func getInfo() {
-        APODService.getAPOD(completion: { apodResponse, imageData in
+        APODService.getAPOD(completion: { apodResponse in
             
-            self.loadingScreen?.activityIndicator.stopAnimating()
-            self.loadingScreen?.backgroundView.isHidden = true
-            self.apodView?.apodName.text = apodResponse.title
-            self.apodView?.apodDesc.text = apodResponse.explanation
-            let image = UIImage(data: imageData)
-            self.apodView?.imageView.image = image
+            DispatchQueue.main.sync {
+                self.apodView?.apodName.text = apodResponse.title
+                self.apodView?.apodDesc.text = apodResponse.explanation
+            }
+            
+            if apodResponse.media_type == "image"{
+                
+                guard let stringUrl = apodResponse.hdurl
+                else { return }
+                
+                APODService.getAPODImage(imgUrl: stringUrl) { imageData in
+
+                    self.apodView?.webView.isHidden = true
+                    let image = UIImage(data: imageData)
+                    self.apodView?.imageView.image = image
+                    self.loadingScreen?.activityIndicator.stopAnimating()
+                    self.loadingScreen?.backgroundView.isHidden = true
+                }
+
+            }
+            else if apodResponse.media_type == "video" {
+                
+                guard let stringUrl = apodResponse.url, let url = URL(string: stringUrl) else { return }
+                
+                DispatchQueue.main.sync {
+                    
+                    self.apodView?.imageView.isHidden = true
+                    self.apodView?.webView.load(URLRequest(url: url))
+                    self.loadingScreen?.activityIndicator.stopAnimating()
+                    self.loadingScreen?.backgroundView.isHidden = true
+                }
+            }
         })
     }
     

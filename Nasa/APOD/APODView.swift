@@ -7,10 +7,12 @@
 
 import UIKit
 import SnapKit
+import WebKit
 
 class APODView: UIView {
 
     let imageView = UIImageView()
+    let webView = WKWebView()
     let apodName = UILabel()
     let apodDesc = UILabel()
     let container = UIStackView()
@@ -34,11 +36,19 @@ class APODView: UIView {
         }
 
         container.addArrangedSubview(imageView)
+        container.addArrangedSubview(webView)
         container.addArrangedSubview(apodName)
         container.addArrangedSubview(apodDesc)
         
         imageView.backgroundColor = .yellow
         imageView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(400)
+        }
+        
+        webView.backgroundColor = .clear
+        webView.isOpaque = false
+        webView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(400)
         }
