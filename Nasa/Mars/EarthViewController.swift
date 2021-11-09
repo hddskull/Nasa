@@ -64,34 +64,37 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func setUpParametrs(){
-//        let dateFormater = DateFormatter()
-//        dateFormater.dateFormat = "YYYY-MM-dd"
-//        currentDate = dateFormater.string(from: Date())
-        currentDate = "2020-10-11"
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "YYYY-MM-dd"
+        currentDate = dateFormater.string(from: Date())
     }
     
     func getImageNames() {
         EarthNetworkManager.getEarthImageNames(self.currentDate) { imageNames in
-            print(imageNames)
             ImageManager.loadImage(imageNames: imageNames) { images in
                 if images.count < 1 {
                     print("no images")
-                    EarthNetworkManager.getEarthImages(imageNames) { imageArr in
-                        ImageManager.saveImage(imageNames: imageNames, imageDataArr: imageArr) { smt in
-                            ImageManager.loadImage(imageNames: imageNames) { images in
+                    EarthNetworkManager.getEarthImages(imageNames, self.currentDate) { imageArr in
+                        //image data to UIimage
+                        DispatchQueue.global(qos: .utility).async {
+                            var images: [UIImage] = []
+                            for imageData in imageArr {
+                                guard let image = UIImage(data: imageData) else { return }
+                                images.append(image)
+                            }
+                            DispatchQueue.main.sync {
                                 self.savedImages = images
                                 self.collectionView.reloadData()
                             }
                         }
+                        ImageManager.saveImage(imageNames: imageNames, imageDataArr: imageArr)
                     }
                 }
                 else {
                     self.savedImages = images
                     self.collectionView.reloadData()
                 }
-                
             }
-
         }
     }
 }
@@ -99,12 +102,8 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
 extension EarthViewController: PassEarthParametrs {
     func didGetParametrs(_ date: String) {
         if currentDate != date {
-            print("diff date")
             currentDate = date
             getImageNames()
-        } else {
-            print("same date")
         }
     }
-    
 }

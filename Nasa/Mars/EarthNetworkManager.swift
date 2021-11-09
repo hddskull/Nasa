@@ -11,12 +11,10 @@ class EarthNetworkManager {
 
     static func getEarthImageNames(_ currentDate: String, completion: @escaping (_ imageNames: [String]) -> ()) {
         
-        print("currentDate in getEarthImageNames: ", currentDate)
         var imageNames = [String]()
         let urlString = "https://api.nasa.gov/EPIC/api/natural/date/\(currentDate)?api_key=YhOi1mhKm17uKLbaUbxo5EmtjOcSIiAC0LQvBcTE"
         
         guard let url = URL(string: urlString) else { return }
-        print("url formed")
         let session = URLSession.shared
         session.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else { return }
@@ -33,7 +31,9 @@ class EarthNetworkManager {
         }.resume()
     }
     
-    static func getEarthImages(_ imageNames: [String], completion: @escaping(_ imageArr: [Data]) -> ()) {
+    static func getEarthImages(_ imageNames: [String],_ date: String, completion: @escaping(_ imageArr: [Data]) -> ()) {
+        
+        let newDate = date.replacingOccurrences(of: "-", with: "/")
         
         let queue = DispatchQueue.global(qos: .utility)
         
@@ -41,11 +41,12 @@ class EarthNetworkManager {
             var imageArr = [Data]()
             
             for name in imageNames {
-                let urlImagesString = "https://api.nasa.gov/EPIC/archive/natural/2020/10/11/png/\(name).png?api_key=YhOi1mhKm17uKLbaUbxo5EmtjOcSIiAC0LQvBcTE"
-                
+                let urlImagesString = "https://api.nasa.gov/EPIC/archive/natural/\(newDate)/png/\(name).png?api_key=YhOi1mhKm17uKLbaUbxo5EmtjOcSIiAC0LQvBcTE"
                 guard let imgURL = URL(string: urlImagesString),
                       let imageData = try? Data(contentsOf: imgURL)
-                else { return }
+                else {
+                    print("image not downloading")
+                    return }
                 
                 imageArr.append(imageData)
             }

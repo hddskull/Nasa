@@ -46,6 +46,7 @@ class APODView: UIView {
         apodName.text = "default apod name"
         apodName.backgroundColor = .clear
         apodName.textColor = .black
+        apodName.numberOfLines = 0
         
         apodName.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(10)

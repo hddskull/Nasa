@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class ImageManager {
-    static func saveImage(imageNames: [String], imageDataArr: [Data], completion: @escaping (_ smt: String) -> ()){
+    static func saveImage(imageNames: [String], imageDataArr: [Data]){
         
         let queue = DispatchQueue.global(qos: .utility)
         
@@ -32,10 +32,7 @@ class ImageManager {
                     print("\(imageNames[i]) already exists")
                 }
             }
-            
-            DispatchQueue.main.sync {
-                completion("smt")
-            }
+            print("images saved")
         }
         
     }
