@@ -18,6 +18,7 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
     var imageNames: [String] = []
     var savedImages: [UIImage] = []
     var currentDate: String!
+    var loadingScreen: LoadingScreen?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,10 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         let paramBtn = UIBarButtonItem(title: "Параметры", style: .plain, target: self, action: #selector(openParametrsView))
         self.navigationController?.navigationBar.topItem?.rightBarButtonItem = paramBtn
+        
+        self.loadingScreen = LoadingScreen()
+        self.loadingScreen?.showLoadingScreen(self.view)
+        self.loadingScreen?.activityIndicator.startAnimating()
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -76,6 +81,8 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func getImageNames() {
+        self.loadingScreen?.backgroundView.isHidden = false
+        self.loadingScreen?.activityIndicator.startAnimating()
         EarthNetworkManager.getEarthImageNames(self.currentDate) { imageNames in
             ImageManager.loadImage(imageNames: imageNames) { images in
                 if images.count < 1 {
@@ -91,6 +98,8 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
                             DispatchQueue.main.sync {
                                 self.savedImages = images
                                 self.collectionView.reloadData()
+                                self.loadingScreen?.activityIndicator.stopAnimating()
+                                self.loadingScreen?.backgroundView.isHidden = true
                             }
                         }
                         ImageManager.saveImage(imageNames: imageNames, imageDataArr: imageArr)
@@ -99,6 +108,8 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
                 else {
                     self.savedImages = images
                     self.collectionView.reloadData()
+                    self.loadingScreen?.activityIndicator.stopAnimating()
+                    self.loadingScreen?.backgroundView.isHidden = true
                 }
             }
         }

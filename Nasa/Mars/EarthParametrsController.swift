@@ -28,6 +28,8 @@ class EarthParametrsController: UIViewController {
         btn.setTitle("Apply", for: .normal)
         btn.tintColor = .white
         btn.backgroundColor = .black
+        btn.clipsToBounds = true
+        btn.layer.cornerRadius = 13
         btn.addTarget(self, action: #selector(getDateFromDataPicker), for: .touchUpInside)
         return btn
     }()
@@ -38,16 +40,19 @@ class EarthParametrsController: UIViewController {
     }
     
     func setUpView() {
-        view.addSubview(datePicker)
         view.backgroundColor = .purple
+
+        view.addSubview(datePicker)
+        view.addSubview(btn)
         
         datePicker.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(100)
+            make.leading.equalToSuperview().offset(15)
+            make.trailing.equalToSuperview().inset(15)
         }
         
-        view.addSubview(btn)
         btn.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
             make.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().inset(30)
             make.height.equalTo(50)
