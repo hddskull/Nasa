@@ -26,6 +26,12 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
         getImageNames()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
     
     func setUpCV(){
         let layout = UICollectionViewFlowLayout()
