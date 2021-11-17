@@ -85,7 +85,7 @@
 		BB46CB01271AD9AB00058FD1 /* Nasa */ = {
 			isa = PBXGroup;
 			children = (
-				DFA3C256272026F600417412 /* Mars */,
+				DFA3C256272026F600417412 /* Earth */,
 				DFA3C2532720248C00417412 /* General */,
 				BB46CB16271B20AF00058FD1 /* APOD */,
 				BB46CB02271AD9AB00058FD1 /* AppDelegate.swift */,
@@ -127,7 +127,7 @@
 			path = General;
 			sourceTree = "<group>";
 		};
-		DFA3C256272026F600417412 /* Mars */ = {
+		DFA3C256272026F600417412 /* Earth */ = {
 			isa = PBXGroup;
 			children = (
 				DFA3C2572720271E00417412 /* EarthViewController.swift */,
@@ -136,7 +136,7 @@
 				DF008CC12720465B00FCEBD3 /* EarthNetworkManager.swift */,
 				DF79B9C62729AFA800983676 /* EarthParametrsController.swift */,
 			);
-			path = Mars;
+			path = Earth;
 			sourceTree = "<group>";
 		};
 		E136CBB49C78A2D57FC90792 /* Pods */ = {
