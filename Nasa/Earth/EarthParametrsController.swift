@@ -63,6 +63,7 @@ class EarthParametrsController: UIViewController {
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "YYYY-MM-dd"
         let date = dateFormater.string(from: datePicker.date)
+        UserDefaults.standard.set(date, forKey: "lastPickedDate")
         if parametrDelegate != nil {
             parametrDelegate?.didGetParametrs(date)
         }

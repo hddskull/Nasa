@@ -75,9 +75,13 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func setUpParametrs(){
-        let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "YYYY-MM-dd"
-        currentDate = dateFormater.string(from: Date())
+        if let lastPickedDate = UserDefaults.standard.string(forKey: "lastPickedDate") {
+            currentDate = lastPickedDate
+        } else {
+            let dateFormater = DateFormatter()
+            dateFormater.dateFormat = "YYYY-MM-dd"
+            currentDate = dateFormater.string(from: Date())
+        }
     }
     
     func getImageNames() {
