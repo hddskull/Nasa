@@ -19,12 +19,14 @@ class TabBarController: UITabBarController {
         self.tabBar.backgroundColor = .black
         let vc1 = APODViewController()
         let vc2 = EarthViewController()
+        let vc3 = MarsViewController()
         
         vc1.title = "APOD"
         vc1.tabBarItem.image = UIImage(systemName: "house")
         vc2.title = "Earth"
         vc2.tabBarItem.image = UIImage(systemName: "star")
-        
+        vc3.title = "Mars"
+        vc3.tabBarItem.image = UIImage(systemName: "m.circle.fill")?.withTintColor(.systemOrange)
 //        guard let items = self.tabBar.items else {
 //            return
 //        }
@@ -33,7 +35,7 @@ class TabBarController: UITabBarController {
 //            items[i].image = UIImage(systemName: images[i])
 //        }
         
-        self.viewControllers = [vc1, vc2]
+        self.viewControllers = [vc1, vc2, vc3]
 //        self.modalPresentationStyle = .fullScreen
 //        present(self, animated: true)
     }

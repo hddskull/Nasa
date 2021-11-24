@@ -20,6 +20,8 @@
 		DF008CBE27203BD600FCEBD3 /* EarthImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF008CBD27203BD600FCEBD3 /* EarthImageCell.swift */; };
 		DF008CC02720443100FCEBD3 /* EarthModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF008CBF2720443100FCEBD3 /* EarthModels.swift */; };
 		DF008CC22720465B00FCEBD3 /* EarthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF008CC12720465B00FCEBD3 /* EarthNetworkManager.swift */; };
+		DF64057F274E79E60089CD6E /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF64057E274E79E60089CD6E /* MarsViewController.swift */; };
+		DF640581274E7B560089CD6E /* MarsImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF640580274E7B560089CD6E /* MarsImageCell.swift */; };
 		DF79B9C22721C03F00983676 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF79B9C12721C03F00983676 /* ImageManager.swift */; };
 		DF79B9C72729AFA800983676 /* EarthParametrsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF79B9C62729AFA800983676 /* EarthParametrsController.swift */; };
 		DFA3C252271F06B000417412 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3C251271F06B000417412 /* LoadingScreen.swift */; };
@@ -44,6 +46,8 @@
 		DF008CBD27203BD600FCEBD3 /* EarthImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthImageCell.swift; sourceTree = "<group>"; };
 		DF008CBF2720443100FCEBD3 /* EarthModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthModels.swift; sourceTree = "<group>"; };
 		DF008CC12720465B00FCEBD3 /* EarthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthNetworkManager.swift; sourceTree = "<group>"; };
+		DF64057E274E79E60089CD6E /* MarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewController.swift; sourceTree = "<group>"; };
+		DF640580274E7B560089CD6E /* MarsImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsImageCell.swift; sourceTree = "<group>"; };
 		DF79B9C12721C03F00983676 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		DF79B9C62729AFA800983676 /* EarthParametrsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthParametrsController.swift; sourceTree = "<group>"; };
 		DFA3C251271F06B000417412 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 		BB46CB01271AD9AB00058FD1 /* Nasa */ = {
 			isa = PBXGroup;
 			children = (
+				DF64057D274E79AB0089CD6E /* Mars */,
 				DFA3C256272026F600417412 /* Earth */,
 				DFA3C2532720248C00417412 /* General */,
 				BB46CB16271B20AF00058FD1 /* APOD */,
@@ -115,6 +120,15 @@
 				846B6AF5253AC314E2D8F692 /* Pods_Nasa.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF64057D274E79AB0089CD6E /* Mars */ = {
+			isa = PBXGroup;
+			children = (
+				DF64057E274E79E60089CD6E /* MarsViewController.swift */,
+				DF640580274E7B560089CD6E /* MarsImageCell.swift */,
+			);
+			path = Mars;
 			sourceTree = "<group>";
 		};
 		DFA3C2532720248C00417412 /* General */ = {
@@ -266,7 +280,9 @@
 				BB46CB03271AD9AB00058FD1 /* AppDelegate.swift in Sources */,
 				DFA3C2582720271E00417412 /* EarthViewController.swift in Sources */,
 				DF008CBE27203BD600FCEBD3 /* EarthImageCell.swift in Sources */,
+				DF64057F274E79E60089CD6E /* MarsViewController.swift in Sources */,
 				DFA3C2552720260500417412 /* TabBarController.swift in Sources */,
+				DF640581274E7B560089CD6E /* MarsImageCell.swift in Sources */,
 				BB46CB1A271B22F600058FD1 /* APODViewController.swift in Sources */,
 				DF79B9C72729AFA800983676 /* EarthParametrsController.swift in Sources */,
 				DFA3C252271F06B000417412 /* LoadingScreen.swift in Sources */,
