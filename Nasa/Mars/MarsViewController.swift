@@ -16,7 +16,9 @@ class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCV()
-        
+        MarsNetworkManager.getMarsPhoto(forRover: .Curiosity, camera: .FHAZ, date: "2021-07-20") { marsModelPhotos in
+            
+        }
     }
 
     //MARK: CollectionView setup
