@@ -19,16 +19,17 @@ class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         
     }
 
+    //MARK: CollectionView setup
     func setUpCV(){
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.itemSize = CGSize(width: (self.view.frame.width - 40)/3, height: (self.view.frame.width - 40)/3)
         
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView.register(MarsImageCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(MarsImageCell.self, forCellWithReuseIdentifier: MarsImageCell.identifier)
+        collectionView.register(MarsCRView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MarsCRView.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .clear
         
@@ -49,9 +50,31 @@ class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
 //        self.loadingScreen?.showLoadingScreen(self.view)
 //        self.loadingScreen?.activityIndicator.startAnimating()
     }
+    //MARK: Section Header
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MarsCRView.identifier, for: indexPath) as! MarsCRView
+        headerView.backgroundColor = .black
+        
+        switch indexPath.section {
+        case 0:
+            headerView.headerLabel.text = "Section 0 header"
+            return headerView
+        case 1:
+            headerView.headerLabel.text = "Section 1 header"
+            return headerView
+        default:
+            headerView.headerLabel.text = ""
+            return headerView
+        }
+    }
 
-
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
 
 }
 // MARK: UICollectionViewDelegate
@@ -65,23 +88,33 @@ extension MarsViewController: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 20
+        switch section {
+        case 0:
+            return 10
+        case 1:
+            return 20
+        default:
+            return 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MarsImageCell
+
+        switch indexPath.section {
+        case 0:
+            cell.backgroundColor = .white
+        case 1:
+            cell.backgroundColor = .green
+        default:
+            cell.backgroundColor = .brown
+        }
         
-        guard let marsCell = cell as? MarsImageCell
-        else { return cell }
-        
-        marsCell.backgroundColor = .brown
-    
         return cell
     }
 }

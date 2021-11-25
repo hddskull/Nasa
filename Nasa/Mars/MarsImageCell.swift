@@ -9,6 +9,8 @@ import UIKit
 
 class MarsImageCell: UICollectionViewCell {
     
+    static let identifier = "MarsImageCell"
+    
     var image: UIImageView = {
         let img = UIImageView()
         img.layer.cornerRadius = 5
