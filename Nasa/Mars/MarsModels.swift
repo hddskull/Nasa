@@ -14,15 +14,15 @@ enum RoverName: String {
     case Spirit = "spirit"
 }
 enum RoverCamera: String {
-    case FHAZ = "fhaz"
-    case RHAZ = "rhaz"
-    case MAST = "mast"
-    case CHEMCAM = "chemcam"
-    case MAHLI = "mahli"
-    case MARDI = "mardi"
-    case NAVCAM = "navcam"
-    case PANCAM = "pancam"
-    case MINITES = "minites"
+    case FHAZ = "=fhaz"
+    case RHAZ = "=rhaz"
+    case MAST = "=mast"
+    case CHEMCAM = "=chemcam"
+    case MAHLI = "=mahli"
+    case MARDI = "=mardi"
+    case NAVCAM = "=navcam"
+    case PANCAM = "=pancam"
+    case MINITES = "=minites"
     case all = ""
 }
 

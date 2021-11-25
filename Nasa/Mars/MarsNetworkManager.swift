@@ -7,10 +7,10 @@
 
 import Foundation
 class MarsNetworkManager {
-    static func getMarsPhoto(forRover: RoverName, camera: RoverCamera, date: String, completion: @escaping (_ marsModelPhotos: MarsModelPhotos)->() ) {
+    static func getMarsPhotoData(forRover: RoverName, camera: RoverCamera, date: String, completion: @escaping (_ marsModelPhotos: MarsModelPhotos)->() ) {
         let apiKey = "YhOi1mhKm17uKLbaUbxo5EmtjOcSIiAC0LQvBcTE"
-        let urlString = "https://api.nasa.gov/mars-photos/api/v1/rovers/\(forRover.rawValue)/photos?earth_date=\(date)&api_key=\(apiKey)&camera=\(camera.rawValue)"
-        
+        let urlString = "https://api.nasa.gov/mars-photos/api/v1/rovers/\(forRover.rawValue)/photos?earth_date=\(date)&api_key=\(apiKey)&camera\(camera.rawValue)"
+        print(urlString)
         guard let url = URL(string: urlString)
         else { return }
         
@@ -24,5 +24,14 @@ class MarsNetworkManager {
             
             completion(marsModelPhotos)
         }.resume()
+    }
+    
+    static func getMarsImage(urlString: String, completion: @escaping (_ imageData: Data) -> ()) {
+        guard let url = URL(string: urlString),
+              let imageData = try? Data(contentsOf: url)
+        else {
+            return
+        }
+        completion(imageData)
     }
 }

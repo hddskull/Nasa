@@ -12,11 +12,27 @@ private let reuseIdentifier = "MarsImageCell"
 class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
     private var collectionView: UICollectionView!
-
+//    private var marsModelPhotos: MarsModelPhotos?
+    private var cameras: [String] = []
+    private var marsImages: [UIImage] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCV()
-        MarsNetworkManager.getMarsPhoto(forRover: .Curiosity, camera: .FHAZ, date: "2021-07-20") { marsModelPhotos in
+        MarsNetworkManager.getMarsPhotoData(forRover: .Curiosity, camera: .CHEMCAM, date: "2021-07-20") { marsModelPhotos in
+            guard let cameraName = marsModelPhotos.photos.first?.camera.full_name
+            else { return }
+            self.cameras.append(cameraName)
+            
+            for photo in marsModelPhotos.photos {
+                MarsNetworkManager.getMarsImage(urlString: photo.img_src) { imageData in
+                    guard let marsImage = UIImage(data: imageData)
+                    else { return }
+                    self.marsImages.append(marsImage)
+                    DispatchQueue.main.sync {
+                        self.collectionView.reloadData()
+                    }
+                }
+            }
             
         }
     }
@@ -53,21 +69,25 @@ class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
 //        self.loadingScreen?.activityIndicator.startAnimating()
     }
     //MARK: Section Header
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MarsCRView.identifier, for: indexPath) as! MarsCRView
         headerView.backgroundColor = .black
-        
-        switch indexPath.section {
-        case 0:
-            headerView.headerLabel.text = "Section 0 header"
-            return headerView
-        case 1:
-            headerView.headerLabel.text = "Section 1 header"
-            return headerView
-        default:
-            headerView.headerLabel.text = ""
-            return headerView
-        }
+        guard self.cameras.count != 0
+        else { return headerView }
+        headerView.headerLabel.text = self.cameras[indexPath.section]
+//        switch indexPath.section {
+//        case 0:
+//            headerView.headerLabel.text = "Section 0 header"
+//            return headerView
+//        case 1:
+//            headerView.headerLabel.text = "Section 1 header"
+//            return headerView
+//        default:
+//            headerView.headerLabel.text = ""
+//            return headerView
+//        }
+        return headerView
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -90,32 +110,36 @@ extension MarsViewController: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 10
-        case 1:
-            return 20
-        default:
-            return 0
-        }
+//        guard let photos = self.marsModelPhotos?.photos
+//        else { return 0 }
+        return self.marsImages.count
+//        switch section {
+//        case 0:
+//            return 10
+//        case 1:
+//            return 20
+//        default:
+//            return 0
+//        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MarsImageCell
 
-        switch indexPath.section {
-        case 0:
-            cell.backgroundColor = .white
-        case 1:
-            cell.backgroundColor = .green
-        default:
-            cell.backgroundColor = .brown
-        }
+        cell.image.image = marsImages[indexPath.row]
+//        switch indexPath.section {
+//        case 0:
+//            cell.backgroundColor = .white
+//        case 1:
+//            cell.backgroundColor = .green
+//        default:
+//            cell.backgroundColor = .brown
+//        }
         
         return cell
     }
