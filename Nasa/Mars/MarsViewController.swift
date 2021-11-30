@@ -12,7 +12,6 @@ private let reuseIdentifier = "MarsImageCell"
 class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
     private var collectionView: UICollectionView!
-//    private var marsModelPhotos: MarsModelPhotos?
     private var cameras: [String] = []
     private var groupedMarsModelPhoto: [[MarsModelPhoto]] = [[],[],[],[],[],[],[]]
     private var groupedMarsImages: [[UIImage]] = [[],[],[],[],[],[],[]]
@@ -109,6 +108,7 @@ class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     }
 
 }
+
 // MARK: UICollectionViewDelegate
 extension MarsViewController: UICollectionViewDelegate {
     
@@ -129,57 +129,30 @@ extension MarsViewController: UICollectionViewDataSource {
         switch section {
         case 0:
             return groupedMarsImages[0].count
-//            return self.marsData.filter { model in
-//                model.camera.full_name == self.cameras[0]
-//            }.count
             
         case 1:
             return groupedMarsImages[1].count
-//            return self.marsData.filter { model in
-//                model.camera.full_name == self.cameras[1]
-//            }.count
             
         case 2:
             return groupedMarsImages[2].count
-//            return self.marsData.filter { model in
-//                model.camera.full_name == self.cameras[2]
-//            }.count
             
         case 3:
             return groupedMarsImages[3].count
-//            return self.marsData.filter { model in
-//                model.camera.full_name == self.cameras[3]
-//            }.count
             
         case 4:
             return groupedMarsImages[4].count
-//            return self.marsData.filter { model in
-//                model.camera.full_name == self.cameras[4]
-//            }.count
             
         case 5:
             return groupedMarsImages[5].count
-//            return self.marsData.filter { model in
-//                model.camera.full_name == self.cameras[5]
-//            }.count
             
         case 6:
             return groupedMarsImages[6].count
-//            return self.marsData.filter { model in
-//                model.camera.full_name == self.cameras[6]
-//            }.count
             
         case 7:
             return groupedMarsImages[7].count
-//            return self.marsData.filter { model in
-//                model.camera.full_name == self.cameras[7]
-//            }.count
             
         case 8:
             return groupedMarsImages[8].count
-//            return self.marsData.filter { model in
-//                model.camera.full_name == self.cameras[8]
-//            }.count
             
         default:
             return 0
