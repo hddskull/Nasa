@@ -11,7 +11,7 @@ class MarsImageCell: UICollectionViewCell {
     
     static let identifier = "MarsImageCell"
     
-    var image: UIImageView = {
+    var imageView: UIImageView = {
         let img = UIImageView()
         img.layer.cornerRadius = 5
         img.clipsToBounds = true
@@ -20,8 +20,8 @@ class MarsImageCell: UICollectionViewCell {
     }()
     
     func setUpCell(){
-        self.addSubview(image)
-        image.snp.makeConstraints { make in
+        self.addSubview(imageView)
+        imageView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
         

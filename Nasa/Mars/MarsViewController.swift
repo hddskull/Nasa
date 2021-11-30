@@ -14,26 +14,47 @@ class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     private var collectionView: UICollectionView!
 //    private var marsModelPhotos: MarsModelPhotos?
     private var cameras: [String] = []
-    private var marsImages: [UIImage] = []
+    private var groupedMarsModelPhoto: [[MarsModelPhoto]] = [[],[],[],[],[],[],[]]
+    private var groupedMarsImages: [[UIImage]] = [[],[],[],[],[],[],[]]
+    
+    private var marsData: [MarsModelPhoto] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCV()
-        MarsNetworkManager.getMarsPhotoData(forRover: .Curiosity, camera: .CHEMCAM, date: "2021-07-20") { marsModelPhotos in
-            guard let cameraName = marsModelPhotos.photos.first?.camera.full_name
-            else { return }
-            self.cameras.append(cameraName)
+        
+        MarsNetworkManager.getMarsPhotoData(forRover: .Curiosity, camera: .all, date: "2021-07-20") { marsModelPhotos in
+                
+            self.marsData = marsModelPhotos.photos
             
-            for photo in marsModelPhotos.photos {
-                MarsNetworkManager.getMarsImage(urlString: photo.img_src) { imageData in
-                    guard let marsImage = UIImage(data: imageData)
-                    else { return }
-                    self.marsImages.append(marsImage)
-                    DispatchQueue.main.sync {
-                        self.collectionView.reloadData()
+            self.cameras = Array( Set( marsModelPhotos.photos.map({ marsModelPhoto in
+                marsModelPhoto.camera.full_name
+            }) ) )
+            
+            DispatchQueue.main.sync {
+                self.collectionView.reloadData()
+            }
+            
+            let lock = NSLock()
+            for i in 0..<self.cameras.count {
+                let arr = self.marsData.filter { model in
+                    model.camera.full_name == self.cameras[i]
+                }
+                self.groupedMarsModelPhoto[i] = arr
+                
+                for model in arr {
+                    MarsNetworkManager.getMarsImage(urlString: model.img_src) { imageData in
+                        guard let marsImage = UIImage(data: imageData)
+                        else { return }
+                        lock.lock()
+                        self.groupedMarsImages[i].append(marsImage)
+                        lock.unlock()
+                        DispatchQueue.main.sync {
+                            self.collectionView.reloadData()
+                        }
                     }
                 }
             }
-            
         }
     }
 
@@ -76,20 +97,9 @@ class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         guard self.cameras.count != 0
         else { return headerView }
         headerView.headerLabel.text = self.cameras[indexPath.section]
-//        switch indexPath.section {
-//        case 0:
-//            headerView.headerLabel.text = "Section 0 header"
-//            return headerView
-//        case 1:
-//            headerView.headerLabel.text = "Section 1 header"
-//            return headerView
-//        default:
-//            headerView.headerLabel.text = ""
-//            return headerView
-//        }
         return headerView
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 50)
     }
@@ -109,37 +119,77 @@ extension MarsViewController: UICollectionViewDataSource {
 
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+
+        return cameras.count
     }
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        guard let photos = self.marsModelPhotos?.photos
-//        else { return 0 }
-        return self.marsImages.count
-//        switch section {
-//        case 0:
-//            return 10
-//        case 1:
-//            return 20
-//        default:
-//            return 0
-//        }
+
+        switch section {
+        case 0:
+            return groupedMarsImages[0].count
+//            return self.marsData.filter { model in
+//                model.camera.full_name == self.cameras[0]
+//            }.count
+            
+        case 1:
+            return groupedMarsImages[1].count
+//            return self.marsData.filter { model in
+//                model.camera.full_name == self.cameras[1]
+//            }.count
+            
+        case 2:
+            return groupedMarsImages[2].count
+//            return self.marsData.filter { model in
+//                model.camera.full_name == self.cameras[2]
+//            }.count
+            
+        case 3:
+            return groupedMarsImages[3].count
+//            return self.marsData.filter { model in
+//                model.camera.full_name == self.cameras[3]
+//            }.count
+            
+        case 4:
+            return groupedMarsImages[4].count
+//            return self.marsData.filter { model in
+//                model.camera.full_name == self.cameras[4]
+//            }.count
+            
+        case 5:
+            return groupedMarsImages[5].count
+//            return self.marsData.filter { model in
+//                model.camera.full_name == self.cameras[5]
+//            }.count
+            
+        case 6:
+            return groupedMarsImages[6].count
+//            return self.marsData.filter { model in
+//                model.camera.full_name == self.cameras[6]
+//            }.count
+            
+        case 7:
+            return groupedMarsImages[7].count
+//            return self.marsData.filter { model in
+//                model.camera.full_name == self.cameras[7]
+//            }.count
+            
+        case 8:
+            return groupedMarsImages[8].count
+//            return self.marsData.filter { model in
+//                model.camera.full_name == self.cameras[8]
+//            }.count
+            
+        default:
+            return 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MarsImageCell
-
-        cell.image.image = marsImages[indexPath.row]
-//        switch indexPath.section {
-//        case 0:
-//            cell.backgroundColor = .white
-//        case 1:
-//            cell.backgroundColor = .green
-//        default:
-//            cell.backgroundColor = .brown
-//        }
+        
+        cell.imageView.image = groupedMarsImages[indexPath.section][indexPath.row]
         
         return cell
     }

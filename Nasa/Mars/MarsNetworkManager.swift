@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 class MarsNetworkManager {
     static func getMarsPhotoData(forRover: RoverName, camera: RoverCamera, date: String, completion: @escaping (_ marsModelPhotos: MarsModelPhotos)->() ) {
         let apiKey = "YhOi1mhKm17uKLbaUbxo5EmtjOcSIiAC0LQvBcTE"
@@ -27,11 +28,15 @@ class MarsNetworkManager {
     }
     
     static func getMarsImage(urlString: String, completion: @escaping (_ imageData: Data) -> ()) {
-        guard let url = URL(string: urlString),
-              let imageData = try? Data(contentsOf: url)
-        else {
-            return
+        
+        DispatchQueue.global(qos: .utility).sync {
+            guard let url = URL(string: urlString),
+                  let imageData = try? Data(contentsOf: url)
+            else {
+                return
+            }
+            completion(imageData)
         }
-        completion(imageData)
+       
     }
 }
