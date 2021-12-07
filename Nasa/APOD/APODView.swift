@@ -54,7 +54,7 @@ class APODView: UIView {
         }
         
         apodName.text = "default apod name"
-        apodName.backgroundColor = .clear
+        apodName.backgroundColor = .blue
         apodName.textColor = .black
         apodName.numberOfLines = 0
         
@@ -64,7 +64,7 @@ class APODView: UIView {
         }
         
         apodDesc.text = "default description \ndefault description \ndefault description \ndefault description \ndefault description \n1111"
-        apodDesc.backgroundColor = .clear
+        apodDesc.backgroundColor = .blue
         apodDesc.textColor = .black
         apodDesc.textAlignment = .left
         apodDesc.numberOfLines = 0

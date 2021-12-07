@@ -17,10 +17,19 @@ class APODViewController: UIViewController {
         super.viewDidLoad()
         setUpView(self.view)
         getInfo()
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
     }
     
     func setUpView(_ view: UIView) {
-        view.backgroundColor = .green
+        view.backgroundColor = .black
         self.apodView = APODView()
         self.apodView?.setConstraints()
         

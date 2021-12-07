@@ -27,16 +27,7 @@ class TabBarController: UITabBarController {
         vc2.tabBarItem.image = UIImage(systemName: "star")
         vc3.title = "Mars"
         vc3.tabBarItem.image = UIImage(systemName: "m.circle.fill")?.withTintColor(.systemOrange)
-//        guard let items = self.tabBar.items else {
-//            return
-//        }
-//        let images = ["house", "star"]
-//        for i in 0..<items.count {
-//            items[i].image = UIImage(systemName: images[i])
-//        }
         
         self.viewControllers = [vc1, vc2, vc3]
-//        self.modalPresentationStyle = .fullScreen
-//        present(self, animated: true)
     }
 }

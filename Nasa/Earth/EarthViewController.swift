@@ -12,6 +12,7 @@ protocol PassEarthParametrs{
 }
 class EarthViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    private var paramBtn: UIBarButtonItem!
     var collectionView: UICollectionView!
     var cellID = "Cell"
     var imageDataArr: [Data] = []
@@ -25,15 +26,20 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
         setUpCV()
         setUpParametrs()
         getImageNames()
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = false
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
     }
     
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = paramBtn
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = nil
+    }
+
     func setUpCV(){
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -49,7 +55,7 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.backgroundColor = .black
         
-        let paramBtn = UIBarButtonItem(title: "Параметры", style: .plain, target: self, action: #selector(openParametrsView))
+        paramBtn = UIBarButtonItem(title: "Earth", style: .plain, target: self, action: #selector(openParametrsView))
         self.navigationController?.navigationBar.topItem?.rightBarButtonItem = paramBtn
         
         self.loadingScreen = LoadingScreen()
@@ -75,7 +81,7 @@ class EarthViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func setUpParametrs(){
-        if let lastPickedDate = UserDefaults.standard.string(forKey: "lastPickedDate") {
+        if let lastPickedDate = UserDefaults.standard.string(forKey: "lastPickedDateEarth") {
             currentDate = lastPickedDate
         } else {
             let dateFormater = DateFormatter()

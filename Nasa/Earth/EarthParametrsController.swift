@@ -39,6 +39,14 @@ class EarthParametrsController: UIViewController {
         setUpView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     func setUpView() {
         view.backgroundColor = .purple
 
@@ -63,7 +71,7 @@ class EarthParametrsController: UIViewController {
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "YYYY-MM-dd"
         let date = dateFormater.string(from: datePicker.date)
-        UserDefaults.standard.set(date, forKey: "lastPickedDate")
+        UserDefaults.standard.set(date, forKey: "lastPickedDateEarth")
         if parametrDelegate != nil {
             parametrDelegate?.didGetParametrs(date)
         }

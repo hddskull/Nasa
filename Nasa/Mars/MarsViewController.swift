@@ -16,7 +16,7 @@ private let reuseIdentifier = "MarsImageCell"
 class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
     //MARK: Properties
-    
+    private var paramBtn: UIBarButtonItem!
     private var collectionView: UICollectionView!
     private var cameras: [String] = []
     private var groupedMarsModelPhoto: [[MarsModelPhoto]] = [[],[],[],[],[],[],[]]
@@ -28,16 +28,17 @@ class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCV()
-//        getMarsImages(rover: .Curiosity, camera: .all, date: "2021-07-20")
-
+        getMarsImages(rover: .Curiosity, camera: .all, date: "2021-07-20")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = paramBtn
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = nil
     }
 
     //MARK: CollectionView setup
@@ -65,7 +66,7 @@ class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.backgroundColor = .black
         
-        let paramBtn = UIBarButtonItem(title: "Параметры", style: .plain, target: self, action: #selector(openParametrsView))
+        paramBtn = UIBarButtonItem(title: "Mars", style: .plain, target: self, action: #selector(openParametrsView))
         self.navigationController?.navigationBar.topItem?.rightBarButtonItem = paramBtn
 //        
 //        self.loadingScreen = LoadingScreen()
@@ -75,6 +76,7 @@ class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     //MARK: Section Header
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MarsCRView.identifier, for: indexPath) as! MarsCRView
         headerView.backgroundColor = .black
         guard self.cameras.count != 0
@@ -84,10 +86,12 @@ class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
         return CGSize(width: collectionView.frame.width, height: 50)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
@@ -103,17 +107,20 @@ class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
             }) ) )
             
             DispatchQueue.main.sync {
+                
                 self.collectionView.reloadData()
             }
             
             let lock = NSLock()
             for i in 0..<self.cameras.count {
+                
                 let arr = self.marsData.filter { model in
                     model.camera.full_name == self.cameras[i]
                 }
                 self.groupedMarsModelPhoto[i] = arr
                 
                 for model in arr {
+                    
                     MarsNetworkManager.getMarsImage(urlString: model.img_src) { imageData in
                         guard let marsImage = UIImage(data: imageData)
                         else { return }
@@ -133,6 +140,7 @@ class MarsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     //MARK: Funcs
     
     @objc func openParametrsView(){
+        
         let paramentrVC = MarsParametrsController()
         paramentrVC.parametrDelegate = self
         navigationController?.pushViewController(paramentrVC, animated: true)
@@ -156,43 +164,13 @@ extension MarsViewController: UICollectionViewDataSource {
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        switch section {
-        case 0:
-            return groupedMarsImages[0].count
-            
-        case 1:
-            return groupedMarsImages[1].count
-            
-        case 2:
-            return groupedMarsImages[2].count
-            
-        case 3:
-            return groupedMarsImages[3].count
-            
-        case 4:
-            return groupedMarsImages[4].count
-            
-        case 5:
-            return groupedMarsImages[5].count
-            
-        case 6:
-            return groupedMarsImages[6].count
-            
-        case 7:
-            return groupedMarsImages[7].count
-            
-        case 8:
-            return groupedMarsImages[8].count
-            
-        default:
-            return 0
-        }
+        
+        return groupedMarsImages[section].count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MarsImageCell
         
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MarsImageCell
         cell.imageView.image = groupedMarsImages[indexPath.section][indexPath.row]
         
         return cell
@@ -201,6 +179,7 @@ extension MarsViewController: UICollectionViewDataSource {
 
 extension MarsViewController: PassMarsParametrs {
     func didGetParametrs(rover: RoverName, camera: RoverCamera, date: String) {
+        
         self.cameras = []
         self.groupedMarsModelPhoto = [[],[],[],[],[],[],[]]
         self.groupedMarsImages = [[],[],[],[],[],[],[]]
